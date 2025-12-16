@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function MobileNavMenu({ open, closeMenu }) {
     return (
         <div
-            className={`fixed inset-0 z-40 lg:hidden bg-black/20 transition-opacity duration-300
+            className={`fixed inset-0 z-40 lg:hidden bg-black/30 transition-opacity duration-300
                 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
             onClick={closeMenu}>
             <section
