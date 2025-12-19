@@ -20,13 +20,13 @@ export default function Navbar() {
                     <MobileNavMenu open={open} closeMenu={() => setOpen(false)} />
                 </div>
 
-                <div>
+                <div >
                     <Link to="/">
-                        <img className="h-12 w-auto " src="https://oddfinds.in/wp-content/uploads/2024/05/Group-8.png" alt="logo" />
+                        <img className="h-12 w-auto -mt-2 " src="https://oddfinds.in/wp-content/uploads/2024/05/Group-8.png" alt="logo" />
                     </Link>
                 </div>
 
-                <div className="flex gap-5 mt-1 ">
+                <div className="flex gap-5 mt-1 items-center">
                     <div className="hidden md:flex gap-3">
                         <Link to="/">Home</Link>
                         <Link to="/contact-us">Contact Us</Link>
@@ -46,7 +46,7 @@ export default function Navbar() {
                 </div>
 
             </div>
-        </nav>
+        </nav >
     );
 }
 
