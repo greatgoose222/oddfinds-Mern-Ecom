@@ -18,9 +18,6 @@ export default function MobileNavMenu({ open, closeMenu }) {
 
                 <div className="flex flex-col gap-3">
                     <Link to="/" onClick={closeMenu}>Home</Link>
-                    <Link to="/contact-us" onClick={closeMenu}>Contact Us</Link>
-                    <Link to="/refund-policy" onClick={closeMenu}>Refund Policy</Link>
-                    <Link to="/shipping-policy" onClick={closeMenu}>Shipping Policy</Link>
                 </div>
             </section>
         </div>

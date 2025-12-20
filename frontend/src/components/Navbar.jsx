@@ -29,9 +29,7 @@ export default function Navbar() {
                 <div className="flex gap-5 mt-1 items-center">
                     <div className="hidden md:flex gap-3">
                         <Link to="/">Home</Link>
-                        <Link to="/contact-us">Contact Us</Link>
-                        <Link to="/refund-policy">Refund Policy</Link>
-                        <Link to="/shipping-policy">Shipping Policy</Link>
+
                     </div>
                     <div className="flex gap-3 mt-2">
                         <CircleUserRoundIcon className="hidden sm:block" />
