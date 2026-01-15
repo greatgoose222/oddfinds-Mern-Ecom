@@ -11,14 +11,19 @@ export const createProduct = async (req, res) => {
 };
 
 export const getProducts = async (req, res) => {
+    const { category, limit } = req.query;
+
+    const filter = category ? { category } : {};
     try {
-        const products = await Product.find()
+        const products = await Product.find(filter).limit(Number(limit) || 0)
         res.status(200).json({ message: "Products Fetched successfully", products })
     } catch (error) {
         res.status(500).json({ message: "Error Occuring in All Products Fetching" })
 
     }
 }
+
+
 
 export const getProduct = async (req, res) => {
     try {

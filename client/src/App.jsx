@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import HomeLayout from './components/layout/HomeLayout'
 import Home from './pages/Home'
-import Product from './pages/Product'
+import ProductDetails from './pages/ProductDetails'
 import Checkout from './pages/Checkout'
 
 import Login from './pages/Login'
@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           <Route index element={<Home />} />
-          <Route path="product/:id" element={<Product />} />
+          <Route path="product/:id" element={<ProductDetails />} />
           <Route path="checkout" element={
             <ProtectedRoute>
               <Checkout />
