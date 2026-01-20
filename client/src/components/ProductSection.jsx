@@ -20,6 +20,7 @@ const ProductSection = ({ categoryName, limitValue }) => {
                     params: { category: categoryName, limit: limitValue },
                     withCredentials: true
                 })
+                console.log(response.data.products[0].images)
                 setProducts(response.data.products);
             } catch (error) {
                 setError("Something went wrong"); console.log(error)
@@ -35,12 +36,17 @@ const ProductSection = ({ categoryName, limitValue }) => {
     // if (loading) return <p>Loading...</p>;
     if (loading) return <ProductGridSkeleton num={limitValue} />;
 
+    const getFeaturedImage = (images = []) => {
+        return images.find(img => img.isFeatured) || images[0];
+    };
+
     return (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
             {products.map((product) => {
+                console.log(product)
                 return <div key={product._id}>
-                    <Link to={`/product/${product._id}`}>
-                        <img src={product.images[0]} className="rounded-sm" />
+                    <Link to={`/product/${product.slug}`}>
+                        <img src={product.images.find((x) => x.isFeatured === true).url} className="rounded-sm" />
                         <p>{product.name}</p>
                     </Link>
                     <p>${product.price}</p>

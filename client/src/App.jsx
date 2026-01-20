@@ -12,6 +12,8 @@ import AdminLayout from './components/layout/AdminLayout'
 import Dashboard from './pages/Dashboard'
 import { ProtectedRoute } from './components/auth/ProtectedRoutes'
 import { ProtectedAdminRoutes } from './components/auth/ProtectedAdminRoutes'
+import AdminProducts from './pages/Admin/AdminProducts'
+import NewProduct from './pages/Admin/NewProduct'
 
 
 
@@ -23,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           <Route index element={<Home />} />
-          <Route path="product/:id" element={<ProductDetails />} />
+          <Route path="product/:slug" element={<ProductDetails />} />
           <Route path="checkout" element={
             <ProtectedRoute>
               <Checkout />
@@ -41,6 +43,8 @@ function App() {
           </ProtectedAdminRoutes>
         }>
           <Route index element={<Dashboard />} />
+          <Route path="products" element={<AdminProducts />} />
+          <Route path="new-product" element={<NewProduct />} />
         </Route>
 
       </Routes>

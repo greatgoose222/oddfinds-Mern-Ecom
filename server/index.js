@@ -1,12 +1,12 @@
+import "./config/env.js";
 import express from 'express'
-import dotenv from "dotenv";
 import mongoose from 'mongoose';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import productRoutes from "./routes/product.route.js";
 import userRoutes from "./routes/user.route.js";
 
-dotenv.config();
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -32,7 +32,6 @@ const connectDB = async () => {
     }
 };
 connectDB();
-
 
 app.use('/api/product', productRoutes)
 app.use('/api/user', userRoutes)

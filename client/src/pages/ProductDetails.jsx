@@ -7,7 +7,7 @@ import { openCart } from "@/redux/uiSlice";
 import { useDispatch } from "react-redux";
 
 function ProductDetails() {
-    const { id } = useParams();
+    const { slug } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch()
@@ -16,7 +16,7 @@ function ProductDetails() {
         const getProduct = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/api/product/${id}`,
+                    `http://localhost:3000/api/product/${slug}`,
                     { withCredentials: true }
                 );
 
@@ -30,7 +30,7 @@ function ProductDetails() {
         };
 
         getProduct();
-    }, [id]);
+    }, [slug]);
 
     if (loading) return <p>Loading...</p>;
     if (!product) return <p>Product not found</p>;
@@ -38,7 +38,7 @@ function ProductDetails() {
     return (
         <div className="p-5 lg:max-w-6xl mx-auto md:flex justify-between gap-10">
             <div className="flex-1">
-                <img className="rounded-md" src={product.images?.[0]} alt={product.name} />
+                <img className="rounded-md" src={product.images.find((x) => x.isFeatured === true).url} alt={product.name} />
             </div>
             <div className="flex-1" >
                 <h1>{product.name}</h1>

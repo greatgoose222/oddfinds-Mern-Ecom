@@ -16,8 +16,19 @@ const productSchema = new mongoose.Schema(
         },
         images: [
             {
-                type: String, // image URL
-            },
+                url: {
+                    type: String,
+                    required: true
+                },
+                order: {
+                    type: Number,
+                    default: 0
+                },
+                isFeatured: {
+                    type: Boolean,
+                    default: false
+                }
+            }
         ],
         category: {
             type: String,

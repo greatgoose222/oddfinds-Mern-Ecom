@@ -27,7 +27,7 @@ function CartItems() {
                         </div>
                     </div>
                     <div>
-                        <img className='h-15 w-auto ml-auto rounded' src={items.images[0]} alt="" />
+                        <img className='h-15 w-auto ml-auto rounded' src={items.images.find((x) => x.isFeatured === true).url} alt="" />
                     </div>
                 </div>
 
