@@ -5,6 +5,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import productRoutes from "./routes/product.route.js";
 import userRoutes from "./routes/user.route.js";
+import orderRoutes from "./routes/order.route.js";
 
 
 const app = express()
@@ -35,6 +36,7 @@ connectDB();
 
 app.use('/api/product', productRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/order', orderRoutes)
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);

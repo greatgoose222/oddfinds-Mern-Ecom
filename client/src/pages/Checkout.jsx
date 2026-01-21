@@ -2,28 +2,20 @@ import SaveAddress from '@/components/SaveAddress'
 import CartItems from '@/components/CartItems'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Phone, TruckElectric } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import AddressSheet from '@/components/AddressSheet';
 import axios from 'axios';
-// import { updateUser } from '@/redux/authSlice';
+
 import toast from 'react-hot-toast';
 import { removeAddress } from '@/redux/authSlice';
+import ShippingDate from '@/components/ShippingDate';
 
 function Checkout() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.auth.user);
-    console.log(user)
-    console.log(user.address)
-
     const [open, setOpen] = useState(false);
-    // date from 7 days from now
-    const date = new Date();
-    date.setDate(date.getDate() + 7);
-    const weekday = date.toLocaleDateString("en-IN", { weekday: "long" });
-    const month = date.toLocaleDateString("en-IN", { month: "short" });
-    const day = date.toLocaleDateString("en-IN", { day: "numeric" });
-    const formattedDate = ` ${weekday}, ${month} ${day}`;
-
+    const [paymentMethod, setPaymentMethod] = useState("online");
+    console.log(paymentMethod)
     const handleAddressRemove = async () => {
 
         try {
@@ -36,6 +28,11 @@ function Checkout() {
             console.log(error)
         }
     };
+
+    const handleOrder = async () => {
+
+    }
+
     return (
         <>
             <div className="p-5 lg:max-w-6xl mx-auto">
@@ -44,6 +41,7 @@ function Checkout() {
                     <CartItems />
                 </div>
 
+                {/* ---- address ----- */}
                 <div>
                     {user.address ? (
                         <div>
@@ -67,25 +65,52 @@ function Checkout() {
                                     </div>
                                 </div>
 
-                                <div className='p-4 flex gap-2'>
-                                    <TruckElectric size={18} strokeWidth={1.5} />
-                                    <div className='-mt-0.5'>
-                                        <p> <span className='font-medium'>Delivery Date</span>:{formattedDate}</p>
-                                        <p className='text-sm text-green-700 -mt-1'>Free Shipping For You</p>
-                                    </div>
-
+                                <div>
+                                    <ShippingDate />
                                 </div>
-
                             </div>
 
-                            <div>
-                                <button className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment </button>
-                            </div>
                         </div>
                     ) : <div>
                         <h2 className='font-medium text-xl pb-5'>Add Address</h2>
                         <SaveAddress /></div>}
                 </div>
+
+                {/*---- paymentMethod -----*/}
+                <div className="flex flex-col gap-1 shadow rounded-md mb-5 p-4 border">
+                    <p >Payment Method</p>
+                    <label className="flex items-center gap-2 cursor-pointer text-gray-800">
+                        <input
+                            type="radio"
+                            name="choice"
+                            value="online"
+                            defaultChecked
+                            onChange={(e) => setPaymentMethod(e.target.value)}
+                            className="h-4 w-4 accent-blue-600"
+                        />
+                        Online Payment
+                    </label>
+
+                    <label className="flex items-center gap-2 cursor-pointer text-gray-800">
+                        <input
+                            type="radio"
+                            name="choice"
+                            value="cod"
+                            onChange={(e) => setPaymentMethod(e.target.value)}
+                            className="h-4 w-4 accent-blue-600"
+                        />
+                        Cash On Delivery
+                    </label>
+                </div>
+
+
+                <div>
+                    <button
+                        onClick={handleOrder}
+                        className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment </button>
+                </div>
+
+
             </div>
         </>
     )
