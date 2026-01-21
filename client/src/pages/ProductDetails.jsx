@@ -21,7 +21,7 @@ function ProductDetails() {
                 );
 
                 setProduct(response.data.product);
-                console.log(response.data.product)
+                // console.log(response.data.product)
             } catch (err) {
                 toast.error("Failed to load product");
             } finally {

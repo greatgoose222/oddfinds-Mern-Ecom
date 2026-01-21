@@ -10,7 +10,7 @@ export default function Navbar() {
 
     const dispatch = useDispatch()
     const cartTotalItems = useSelector(state => state.cart.cartItems.length)
-
+    const user = useSelector(state => state.auth.user?.role)
     return (
         <nav className=" border-b border-primary ">
             <div className="max-w-6xl flex items-center justify-between w-full m-auto py-3 px-5">
@@ -31,11 +31,12 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex gap-5 mt-1 items-center">
-                    <div className="hidden md:flex gap-3">
+                    <div className="hidden md:flex gap-3 mt-1">
                         <Link to="/">Home</Link>
 
                     </div>
-                    <div className="flex gap-3 mt-2">
+                    <div className="flex gap-3 mt-2 text-sm">
+                        {user === "admin" && <Link to="/admin" className="text-xs rounded px-2 bg-black text-amber-50 inline-flex items-center ">Admin</Link>}
                         <CircleUserRoundIcon
                             strokeWidth={1.7}
                             className="hidden sm:block"

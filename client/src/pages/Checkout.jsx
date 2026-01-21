@@ -9,13 +9,21 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { removeAddress } from '@/redux/authSlice';
 import ShippingDate from '@/components/ShippingDate';
+import { handleOrder } from '@/helpers/order.helper';
+
 
 function Checkout() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.auth.user);
+    const { cartItems, totalPrice } = useSelector(state => state.cart)
+    console.log(cartItems)
+    console.log(totalPrice)
     const [open, setOpen] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("online");
-    console.log(paymentMethod)
+
+
+
+
     const handleAddressRemove = async () => {
 
         try {
@@ -29,9 +37,7 @@ function Checkout() {
         }
     };
 
-    const handleOrder = async () => {
 
-    }
 
     return (
         <>
@@ -106,7 +112,7 @@ function Checkout() {
 
                 <div>
                     <button
-                        onClick={handleOrder}
+                        onClick={() => handleOrder(user.address, paymentMethod, cartItems, totalPrice)}
                         className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment </button>
                 </div>
 

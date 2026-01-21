@@ -33,18 +33,21 @@ const orderSchema = new mongoose.Schema({
         }
     ],
 
-    shippingAddress: {
-        fullName: { type: String, required: true },
-        phone: { type: String, required: true },
-        address: { type: String, required: true },
-        city: { type: String, required: true },
-        state: { type: String, required: true },
-        pincode: { type: String, required: true }
+    address: {
+        pincode: { type: String, trim: true },
+        fullName: { type: String, trim: true },
+        phone: { type: String, trim: true },
+        city: { type: String, trim: true },
+        state: { type: String, trim: true },
+        addressLine: { type: String, trim: true },
+        country: {
+            type: String,
+        },
     },
 
     paymentMethod: {
         type: String,
-        enum: ["COD", "ONLINE"],
+        enum: ["cod", "online"],
         required: true
     },
 
@@ -57,10 +60,10 @@ const orderSchema = new mongoose.Schema({
     paymentId: String,
     gatewayOrderId: String,
 
-    itemsPrice: {
-        type: Number,
-        required: true
-    },
+    // itemsPrice: {
+    //     type: Number,
+    //     required: true
+    // },
     shippingPrice: {
         type: Number,
         default: 0
@@ -82,5 +85,5 @@ const orderSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-const Orders = mongoose.model("Order", orderSchema);
-export default Orders;
+const Order = mongoose.model("Order", orderSchema);
+export default Order;
