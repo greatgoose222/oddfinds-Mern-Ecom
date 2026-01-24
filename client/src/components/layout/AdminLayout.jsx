@@ -19,7 +19,7 @@ function AdminLayout() {
                         <span className="text-xl font-mono -mt-0.7">Products</span>
                     </Link>
 
-                    <Link to="/product" className="flex items-center gap-3" >
+                    <Link to="/admin/orders" className="flex items-center gap-3" >
                         <ShoppingBag size={18} strokeWidth={2} />
                         <span className="text-xl font-mono -mt-0.7">Orders</span>
                     </Link>

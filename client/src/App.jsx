@@ -14,6 +14,7 @@ import { ProtectedRoute } from './components/auth/ProtectedRoutes'
 import { ProtectedAdminRoutes } from './components/auth/ProtectedAdminRoutes'
 import AdminProducts from './pages/Admin/AdminProducts'
 import NewProduct from './pages/Admin/NewProduct'
+import AdminOrders from './pages/Admin/AdminOrders'
 
 
 
@@ -45,6 +46,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="products" element={<AdminProducts />} />
           <Route path="new-product" element={<NewProduct />} />
+          <Route path="orders" element={<AdminOrders />} />
         </Route>
 
       </Routes>
