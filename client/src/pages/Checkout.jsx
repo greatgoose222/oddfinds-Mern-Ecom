@@ -9,7 +9,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { removeAddress } from '@/redux/authSlice';
 import ShippingDate from '@/components/ShippingDate';
-import { handleOrder } from '@/helpers/order.helper';
+import { handleCodOrder, handleOnlineOrder } from '@/helpers/order.helper';
 
 
 function Checkout() {
@@ -111,9 +111,15 @@ function Checkout() {
 
 
                 <div>
-                    <button
-                        onClick={() => handleOrder(user.address, paymentMethod, cartItems, totalPrice)}
-                        className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment </button>
+                    {paymentMethod === 'online' ?
+                        <button
+                            onClick={() => handleOnlineOrder(totalPrice)}
+                            className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment
+                        </button> : <button
+                            onClick={() => handleCodOrder(user.address, paymentMethod, cartItems, totalPrice)}
+                            className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Place Cod Order
+                        </button>}
+
                 </div>
 
 
