@@ -4,6 +4,7 @@ import HomeLayout from './components/layout/HomeLayout'
 import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
 import Checkout from './pages/Checkout'
+import PaymentSuccess from './pages/PaymentSuccess'
 
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -15,6 +16,7 @@ import { ProtectedAdminRoutes } from './components/auth/ProtectedAdminRoutes'
 import AdminProducts from './pages/Admin/AdminProducts'
 import NewProduct from './pages/Admin/NewProduct'
 import AdminOrders from './pages/Admin/AdminOrders'
+
 
 
 
@@ -36,6 +38,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
         </Route >
 
         <Route path="/admin" element={

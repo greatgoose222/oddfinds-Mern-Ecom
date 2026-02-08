@@ -1,6 +1,7 @@
 import Order from "../models/order.model.js";
 import { razorpay } from "../config/razorpay.js";
 import crypto from "crypto";
+
 export const createCodOrder = async (req, res) => {
     try {
         const userId = req.user.userId;
@@ -12,15 +13,12 @@ export const createCodOrder = async (req, res) => {
             totalAmount,
         } = req.body;
 
-        const paymentStatus =
-            paymentMethod === "cod" ? "pending" : "paid";
 
         const order = await Order.create({
             user: userId,
             orderItems,
             address,
             paymentMethod,
-            paymentStatus,
             totalAmount,
         });
 
@@ -38,9 +36,16 @@ export const createCodOrder = async (req, res) => {
 };
 
 export const createOnlineOrder = async (req, res) => {
-    try {
 
-        const { totalAmount } = req.body;
+    try {
+        const userId = req.user.userId;
+        const {
+            orderItems,
+            address,
+            paymentMethod,
+            totalAmount,
+        } = req.body;
+
 
         const options = {
             amount: totalAmount * 100, // Razorpay needs paise
@@ -48,11 +53,26 @@ export const createOnlineOrder = async (req, res) => {
             receipt: `rcpt_${Date.now()}`
         };
 
-        const order = await razorpay.orders.create(options);
+
+        const rzpOrder = await razorpay.orders.create(options);
+        const { id: razorpayOrderId } = rzpOrder
+
+
+        const order = await Order.create({
+            user: userId,
+            orderItems,
+            address,
+            paymentMethod,
+            razorpayOrderId,
+            totalAmount,
+        });
+
+
 
         return res.status(201).json({
             success: true,
-            order
+            order,
+            rzpOrder
         });
     } catch (error) {
         console.error(error);
@@ -70,23 +90,30 @@ export const getKey = async (req, res) => {
 }
 
 export const paymentVerification = async (req, res) => {
-    const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body
-    // Verify signature part
-    const body = razorpay_order_id + "|" + razorpay_payment_id;
-    const expectedSignature = crypto
-        .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-        .update(body)
-        .digest("hex");
+    try {
+        const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body
+        // Verify signature part
+        const body = razorpay_order_id + "|" + razorpay_payment_id;
+        const expectedSignature = crypto
+            .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+            .update(body)
+            .digest("hex");
 
 
-    if (expectedSignature !== razorpay_signature) {
-        // await Order.updateStatus(order.id, { status: "FAILED" });
-        return res.status(400).json({ success: false });
+        if (expectedSignature !== razorpay_signature) {
+            await Order.findOneAndUpdate({ razorpayOrderId: razorpay_order_id, paymentStatus: "pending" }, { paymentStatus: "failed" });
+            return res.status(400).json({ success: false });
+        }
+        await Order.findOneAndUpdate({ razorpayOrderId: razorpay_order_id, paymentStatus: "pending" }, {
+            paymentStatus: "paid",
+            razorpayPaymentId: razorpay_payment_id
+        });
+
+        res.status(200).json({ success: true })
+    } catch (error) {
+        console.error("Payment verification error:", error);
+        res.status(500).json({ success: false });
     }
-
-    res.status(200).json({
-        success: true
-    })
 }
 
 

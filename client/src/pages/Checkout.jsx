@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 import { removeAddress } from '@/redux/authSlice';
 import ShippingDate from '@/components/ShippingDate';
 import { handleCodOrder, handleOnlineOrder } from '@/helpers/order.helper';
+import { useNavigate } from 'react-router-dom';
 
 
 function Checkout() {
@@ -21,7 +22,7 @@ function Checkout() {
     const [open, setOpen] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("online");
 
-
+    const navigate = useNavigate()
 
 
     const handleAddressRemove = async () => {
@@ -113,10 +114,10 @@ function Checkout() {
                 <div>
                     {paymentMethod === 'online' ?
                         <button
-                            onClick={() => handleOnlineOrder(totalPrice)}
+                            onClick={() => handleOnlineOrder(user.address, paymentMethod, cartItems, totalPrice, navigate)}
                             className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment
                         </button> : <button
-                            onClick={() => handleCodOrder(user.address, paymentMethod, cartItems, totalPrice)}
+                            onClick={() => handleCodOrder(user.address, paymentMethod, cartItems, totalPrice, navigate)}
                             className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Place Cod Order
                         </button>}
 

@@ -53,17 +53,13 @@ const orderSchema = new mongoose.Schema({
 
     paymentStatus: {
         type: String,
-        enum: ["pending", "paid"],
+        enum: ["pending", "paid", "failed"],
         default: "pending"
     },
 
-    paymentId: String,
-    gatewayOrderId: String,
+    razorpayOrderId: String,
+    razorpayPaymentId: String,
 
-    // itemsPrice: {
-    //     type: Number,
-    //     required: true
-    // },
     shippingPrice: {
         type: Number,
         default: 0
@@ -79,7 +75,7 @@ const orderSchema = new mongoose.Schema({
 
     orderStatus: {
         type: String,
-        default: "placed"
+        default: "pending"
     }
 
 }, { timestamps: true });
