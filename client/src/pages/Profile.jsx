@@ -1,5 +1,4 @@
 import React from 'react'
-import MyOrdersPage from './MyOrdersPage'
 
 function Profile() {
     return (
@@ -10,7 +9,6 @@ function Profile() {
                 <button className='p-2 bg-amber-800 w-full rounded max-w-30 text-amber-50 mt-3'>Logout</button>
             </div>
             <div className=' grow'>
-                <MyOrdersPage />
             </div>
         </div>
     )

@@ -27,7 +27,8 @@ function MobileMenu() {
                 />
                 <div className="flex flex-col gap-2 p-5">
                     <Link to="/" onClick={() => dispatch(closeAll())}>Home</Link>
-                    <Link to="/Checkout" onClick={() => dispatch(closeAll())}>Checkout</Link>
+                    <Link to="/shipping-policy" onClick={() => dispatch(closeAll())}>Shipping Policy</Link>
+                    <Link to="/refund-policy" onClick={() => dispatch(closeAll())}>Refund POlicy</Link>
                 </div>
 
             </div>

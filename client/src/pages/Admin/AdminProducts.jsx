@@ -44,10 +44,13 @@ const AdminProducts = () => {
                 {products.map((product) => {
                     return <div key={product._id}>
                         <Link to={`/product/${product._id}`}>
-                            <img src={product.images.find((x) => x.isFeatured === true).url} className="rounded-sm" />
+                            <img src={product?.images?.featured?.url} className="rounded-sm" />
                             <p>{product.name}</p>
                         </Link>
-                        <p>${product.price}</p>
+                        <div className="flex gap-1">
+                            <p className="font-medium">₹{product.sellingPrice}</p>
+                            <p className="text-gray-400 line-through">₹{product.price}</p>
+                        </div>
                     </div>
                 })}
             </div>

@@ -36,19 +36,19 @@ const ProductSection = ({ categoryName, limitValue }) => {
     // if (loading) return <p>Loading...</p>;
     if (loading) return <ProductGridSkeleton num={limitValue} />;
 
-    // const getFeaturedImage = (images = []) => {
-    //     return images.find(img => img.isFeatured) || images[0];
-    // };
-
     return (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
             {products.map((product) => {
                 return <div key={product._id}>
                     <Link to={`/product/${product.slug}`}>
-                        <img src={product.images.find((x) => x.isFeatured === true).url} className="rounded-sm" />
+                        <img src={product?.images?.featured?.url} className="rounded-sm" />
                         <p>{product.name}</p>
                     </Link>
-                    <p>₹{product.price}</p>
+                    <div className="flex gap-1">
+                        <p className="font-medium">₹{product.sellingPrice}</p>
+                        <p className="text-gray-400 line-through">₹{product.price}</p>
+                    </div>
+
                 </div>
             })}
         </div>

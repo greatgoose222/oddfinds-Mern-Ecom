@@ -14,22 +14,23 @@ const productSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
-        images: [
-            {
-                url: {
-                    type: String,
-                    required: true
-                },
-                order: {
-                    type: Number,
-                    default: 0
-                },
-                isFeatured: {
-                    type: Boolean,
-                    default: false
+        sellingPrice: {
+            type: Number,
+            required: true,
+        },
+        images: {
+            featured: {
+                url: String,
+                public_id: String
+            },
+            gallery: [
+                {
+                    url: String,
+                    public_id: String,
+                    order: Number
                 }
-            }
-        ],
+            ]
+        },
         category: {
             type: String,
         },

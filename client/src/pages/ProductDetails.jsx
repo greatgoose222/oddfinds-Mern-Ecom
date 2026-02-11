@@ -38,7 +38,7 @@ function ProductDetails() {
     return (
         <div className="p-5 lg:max-w-6xl mx-auto md:flex justify-between gap-10">
             <div className="flex-1">
-                <img className="rounded-md" src={product.images.find((x) => x.isFeatured === true).url} alt={product.name} />
+                <img className="rounded-md" src={product?.images?.featured?.url} alt={product.name} />
             </div>
             <div className="flex-1" >
                 <h1>{product.name}</h1>

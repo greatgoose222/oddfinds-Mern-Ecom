@@ -5,6 +5,9 @@ import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
 import Checkout from './pages/Checkout'
 import PaymentSuccess from './pages/PaymentSuccess'
+import ShippingPolicy from './pages/ShippingPolicy'
+import RefundPolicy from './pages/RefundPolicy'
+
 
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -16,6 +19,7 @@ import { ProtectedAdminRoutes } from './components/auth/ProtectedAdminRoutes'
 import AdminProducts from './pages/Admin/AdminProducts'
 import NewProduct from './pages/Admin/NewProduct'
 import AdminOrders from './pages/Admin/AdminOrders'
+
 
 
 
@@ -39,6 +43,9 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="profile" element={<Profile />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="shipping-policy" element={<ShippingPolicy />} />
+          <Route path="refund-policy" element={<RefundPolicy />} />
+
         </Route >
 
         <Route path="/admin" element={
