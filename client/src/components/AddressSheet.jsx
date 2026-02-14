@@ -5,14 +5,14 @@ import SaveAddress from "./SaveAddress";
 function AddressSheet({ onClose, title }) {
   {
     return (
-      <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center">
+      <div className="fixed inset-0 z-50 flex items-end md:items-stretch md:justify-end">
 
         {/* overlay */}
-        <div className="absolute inset-0 bg-black/50"
+        <div className="absolute z-40 inset-0 "
           onClick={onClose} />
 
         {/* modal / bottom sheet */}
-        <div className="relative w-full md:max-w-md bg-white rounded-t-2xl md:rounded-xl p-4 animate-slideUp md:animate-fadeIn ">
+        <div className="relative w-full md:w-96 h-auto md:h-full bg-white rounded-t-2xl md:rounded-none p-4 animate-slideUp md:animate-slideLeft">
 
           <h2 className="text-lg font-semibold mb-4">  {title}</h2>
           <SaveAddress onClose={onClose} />

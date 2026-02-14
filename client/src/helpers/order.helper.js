@@ -6,13 +6,12 @@ import toast from 'react-hot-toast';
 export const handleCodOrder = async (address, paymentMethod, cartItems, totalPrice, navigate) => {
 
     const orderItems = cartItems.map((item) => {
-        const featuredImage = item.images?.find(
-            (img) => img.isFeatured === true
-        );
+        const featuredImage = item.images?.featured?.url
+        console.log(featuredImage)
         return {
             product: item._id,
             name: item.name,
-            image: featuredImage?.url || "",
+            image: featuredImage || "",
             price: item.price,
             quantity: item.quantity,
         };
@@ -45,13 +44,11 @@ export const handleCodOrder = async (address, paymentMethod, cartItems, totalPri
 export const handleOnlineOrder = async (address, paymentMethod, cartItems, totalPrice, navigate) => {
 
     const orderItems = cartItems.map((item) => {
-        const featuredImage = item.images?.find(
-            (img) => img.isFeatured === true
-        );
+        const featuredImage = item.images?.featured?.url
         return {
             product: item._id,
             name: item.name,
-            image: featuredImage?.url || "",
+            image: featuredImage || "",
             price: item.price,
             quantity: item.quantity,
         };

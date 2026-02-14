@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 function AdminLayout() {
     return (
         <div className="flex">
-            <div className="w-70 p-5 h-screen border-r-2 ">
+            <div className="w-60 pt-5 pl-5 h-screen ">
                 <div className="flex items-center gap-3">
                     <UserStar strokeWidth={1.5} />
                     <h1 className="text-2xl font-bold"> Admin Panel</h1>
@@ -23,6 +23,15 @@ function AdminLayout() {
                         <ShoppingBag size={18} strokeWidth={2} />
                         <span className="text-xl font-mono -mt-0.7">Orders</span>
                     </Link>
+
+                    <div className=" mt-5 flex gap-2 justify-between">
+                        <Link to="/" className="" >
+                            <button className=" border rounded-md px-6 py-1  bg-[#c06135] text-white">Home</button>
+                        </Link>
+
+                        <button className=" border rounded-md px-5 py-1  bg-black text-white">Logout</button>
+                    </div>
+
 
                 </div>
 

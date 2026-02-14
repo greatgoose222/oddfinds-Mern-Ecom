@@ -1,33 +1,30 @@
 @import "tailwindcss";
 
-/* my css */
-@layer utilities {
+/* Define animation tokens */
+@theme {
+  --animate-slideUp: slideUp 0.3s ease-out;
+  --animate-slideLeft: slideLeft 0.3s ease-out;
+}
+
+/* Define keyframes */
 @keyframes slideUp {
   from {
     transform: translateY(100%);
+    opacity: 0;
   }
   to {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-@keyframes fadeIn {
+@keyframes slideLeft {
   from {
+    transform: translateX(100%);
     opacity: 0;
-    transform: scale(0.95);
   }
   to {
+    transform: translateX(0);
     opacity: 1;
-    transform: scale(1);
   }
-}
-
-.animate-slideUp {
-  animation: slideUp 0.3s ease-out forwards;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.2s ease-out forwards;
-}
-
 }

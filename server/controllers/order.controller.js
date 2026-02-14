@@ -124,7 +124,7 @@ export const getOrders = async (req, res) => {
     const skip = (page - 1) * limit;
 
     try {
-        const orders = await Order.find({}).populate("user", "name").skip(skip).limit(Number(limit) || 0)
+        const orders = await Order.find({}).populate("user", "name").sort({ createdAt: -1 }).skip(skip).limit(Number(limit) || 0)
 
         const totalProducts = await Order.countDocuments({});
         const totalPages = Math.ceil(totalProducts / limit);
