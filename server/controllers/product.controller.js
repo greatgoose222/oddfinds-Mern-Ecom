@@ -1,6 +1,5 @@
 import Product from "../models/product.model.js";
 import slugify from "slugify";
-// import { uploadToCloudinary } from "../cloudinary/uploadToCloudinary.js";
 
 // CREATE
 export const createProduct = async (req, res) => {
@@ -39,7 +38,6 @@ export const getProducts = async (req, res) => {
 
     }
 }
-
 
 
 export const getProduct = async (req, res) => {

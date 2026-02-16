@@ -7,6 +7,7 @@ import Checkout from './pages/Checkout'
 import PaymentSuccess from './pages/PaymentSuccess'
 import ShippingPolicy from './pages/ShippingPolicy'
 import RefundPolicy from './pages/RefundPolicy'
+import CategoryProducts from './components/CategoryProducts'
 
 
 import Login from './pages/Login'
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<HomeLayout />}>
           <Route index element={<Home />} />
           <Route path="product/:slug" element={<ProductDetails />} />
+          <Route path="product/category/:category" element={<CategoryProducts />} />
           <Route path="checkout" element={
             <ProtectedRoute>
               <Checkout />
