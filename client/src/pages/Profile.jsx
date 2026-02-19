@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { clearAuth } from '../redux/authSlice';
 import { LogOut } from 'lucide-react';
+import UserOrders from '../components/UserOrders';
 
 function Profile() {
     const dispatch = useDispatch()
@@ -34,8 +35,8 @@ function Profile() {
             </div>
 
             <div className='bg-[#FCF8F8] rounded-2xl'>
-                <div>
-                    orders
+                <div className='p-4'>
+                    <UserOrders />
                 </div>
             </div>
 

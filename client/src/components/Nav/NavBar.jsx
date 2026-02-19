@@ -12,7 +12,7 @@ export default function Navbar() {
     const cartTotalItems = useSelector(state => state.cart.cartItems.length)
     const user = useSelector(state => state.auth.user?.role)
     return (
-        <nav className=" border-b border-[#c06135] sticky top-0 bg-white ">
+        <nav className=" border-b border-[#c06135] sticky top-0 bg-white z-50 ">
             <div className="max-w-6xl flex items-center justify-between w-full m-auto py-5 px-5">
 
                 <div className="md:hidden mt-4 w-14">

@@ -135,3 +135,16 @@ export const getOrders = async (req, res) => {
 
     }
 }
+
+
+export const getUserOrders = async (req, res) => {
+    const userId = req.user.userId;
+    try {
+        const orders = await Order.find({ user: userId }).sort({ createdAt: -1 })
+        console.log(orders)
+        res.status(200).json({ message: "Orders Fetched successfully", orders })
+    } catch (error) {
+        res.status(500).json({ message: "Error Occuring in orders Fetching" })
+
+    }
+}
