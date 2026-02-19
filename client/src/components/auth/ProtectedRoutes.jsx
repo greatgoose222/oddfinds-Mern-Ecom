@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 export function ProtectedRoute({ children }) {
     const { isAuthenticated, loading } = useSelector(state => state.auth);
@@ -10,6 +11,7 @@ export function ProtectedRoute({ children }) {
     }
 
     if (!isAuthenticated) {
+        toast.error('Login Required To access This Page')
         return <Navigate to="/login" state={{ from: location.pathname }} replace />;
     }
 

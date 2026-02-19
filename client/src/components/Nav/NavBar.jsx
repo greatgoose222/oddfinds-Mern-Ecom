@@ -15,7 +15,7 @@ export default function Navbar() {
         <nav className=" border-b border-[#c06135] sticky top-0 bg-white ">
             <div className="max-w-6xl flex items-center justify-between w-full m-auto py-5 px-5">
 
-                <div className="md:hidden mt-4">
+                <div className="md:hidden mt-4 w-14">
                     <Menu
                         onClick={() => dispatch(openMenu())}
                         strokeWidth={2}
@@ -37,12 +37,15 @@ export default function Navbar() {
                         <Link to="/shipping-policy">Shipping Policy</Link>
 
                     </div>
-                    <div className="flex gap-3 mt-2 text-sm">
+                    <div className="flex gap-2 mt-2 text-sm">
                         {user === "admin" && <Link to="/admin" className="text-xs rounded px-2 bg-black text-amber-50 inline-flex items-center ">Admin</Link>}
-                        <CircleUserRoundIcon
-                            strokeWidth={1.7}
-                            className="hidden sm:block"
-                        />
+                        <Link to="/profile">
+                            <CircleUserRoundIcon
+                                strokeWidth={1.7}
+                                className="sm:block"
+                            />
+                        </Link>
+
                         <div className="relative">
                             <ShoppingCart
                                 onClick={() => dispatch(openCart())}

@@ -43,7 +43,10 @@ function App() {
           />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="shipping-policy" element={<ShippingPolicy />} />
           <Route path="refund-policy" element={<RefundPolicy />} />
