@@ -13,12 +13,11 @@ const port = process.env.PORT || 3000
 
 // middleware
 app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-        allowedHeaders: ["Content-Type", "Authorization",
-            "Cache-Control", "Expires", "Pragma",],             // these 3 not neccary in modern app
-        credentials: true
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ["Content-Type", "Authorization",
+        "Cache-Control", "Expires", "Pragma",],             // these 3 not neccary in modern app
+    credentials: true
 }));
 
 app.use(express.json());
