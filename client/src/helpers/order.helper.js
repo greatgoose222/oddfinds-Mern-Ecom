@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from "@/utils/api";
 import toast from 'react-hot-toast';
 
 
@@ -19,8 +19,8 @@ export const handleCodOrder = async (address, paymentMethod, cartItems, totalPri
 
 
     try {
-        await axios.post(
-            'http://localhost:3000/api/order/cod',
+        await api.post(
+            '/api/order/cod',
             {
                 orderItems,
                 address,
@@ -56,12 +56,12 @@ export const handleOnlineOrder = async (address, paymentMethod, cartItems, total
 
 
     try {
-        const keyData = await axios.get('http://localhost:3000/api/order/getkey',
+        const keyData = await api.get('/api/order/getkey',
             { withCredentials: true }
         );
 
-        const response = await axios.post(
-            'http://localhost:3000/api/order/online',
+        const response = await api.post(
+            '/api/order/online',
             {
                 orderItems,
                 address,
@@ -84,7 +84,7 @@ export const handleOnlineOrder = async (address, paymentMethod, cartItems, total
             description: 'Test Transaction',
             order_id: response.data.rzpOrder.id, // This is the order_id created in the backend
             handler: async function (razorpayResponse) {
-                const verifyRes = await axios.post("http://localhost:3000/api/order/payment-verification",
+                const verifyRes = await api.post("/api/order/payment-verification",
                     razorpayResponse,
                     { withCredentials: true }
                 );

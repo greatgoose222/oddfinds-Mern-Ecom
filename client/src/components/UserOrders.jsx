@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "@/utils/api"
 import { useEffect, useState } from "react";
 
 function UserOrders() {
@@ -6,7 +6,7 @@ function UserOrders() {
     useEffect(() => {
         const getOrders = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/order/user-orders', {
+                const response = await api.get('/api/order/user-orders', {
                     withCredentials: true
                 })
                 // console.log(response.data.orders)

@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import axios from 'axios';
+import api from "@/utils/api";
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -14,7 +14,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/user/signup', { name, email, password }, {
+            const response = await api.post('/api/user/signup', { name, email, password }, {
                 withCredentials: true,
 
             })

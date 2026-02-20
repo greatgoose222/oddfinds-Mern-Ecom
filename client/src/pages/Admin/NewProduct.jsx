@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "@/utils/api"
 import { X } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -85,7 +85,7 @@ function NewProduct() {
         };
 
         try {
-            const response = await axios.post('http://localhost:3000/api/product', finalProduct, {
+            const response = await api.post('/api/product', finalProduct, {
                 withCredentials: true,
 
             })

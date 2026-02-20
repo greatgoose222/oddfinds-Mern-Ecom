@@ -1,6 +1,6 @@
 // import { updateUser } from "@/redux/authSlice";
 import { saveAddress } from "@/redux/authSlice";
-import axios from "axios";
+import api from "@/utils/api"
 import { use, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -27,7 +27,7 @@ export default function SaveAddress({ onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/user/saveAddress', { ...address }, {
+      const response = await api.post('/api/user/saveAddress', { ...address }, {
         withCredentials: true,
       })
       console.log(response.data.address)

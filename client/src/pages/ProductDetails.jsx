@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "@/utils/api"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -16,8 +16,8 @@ function ProductDetails() {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const response = await axios.get(
-                    `http://localhost:3000/api/product/${slug}`,
+                const response = await api.get(
+                    `/api/product/${slug}`,
                     { withCredentials: true }
                 );
 

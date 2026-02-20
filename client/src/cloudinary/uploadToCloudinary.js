@@ -1,4 +1,5 @@
-import axios from "axios";
+import api from "@/utils/api"
+import axios from 'axios'
 
 export const uploadToCloudinary = async (file, folder) => {
 
@@ -15,8 +16,8 @@ export const uploadToCloudinary = async (file, folder) => {
 
     const uniqueName = `${originalName}-${extension}-${Date.now()}`;
 
-    const { data } = await axios.post(
-        "http://localhost:3000/api/upload/cloudinary-signature",
+    const { data } = await api.post(
+        "/api/upload/cloudinary-signature",
         { public_id: uniqueName, folder }
     );
 

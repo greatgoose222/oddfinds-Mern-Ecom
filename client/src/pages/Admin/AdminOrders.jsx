@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "@/utils/api"
 import { ExternalLink, Package, SquareChevronLeft, SquareChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import OrderSheet from "./OrderSheet";
@@ -13,7 +13,7 @@ function AdminOrders() {
     useEffect(() => {
         const getOrders = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/order', {
+                const response = await api.get('/api/order', {
                     params: { page, limit: 7 },
                     withCredentials: true
                 })

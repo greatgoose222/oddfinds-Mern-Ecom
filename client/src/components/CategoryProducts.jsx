@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "@/utils/api"
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
 import { openCart } from "@/redux/uiSlice";
@@ -17,7 +17,7 @@ const CategoryProducts = ({ limitValue = 10 }) => {
         const getProducts = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:3000/api/product', {
+                const response = await api.get('/api/product', {
                     params: { category, limit: limitValue },
                     withCredentials: true
                 })

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from "@/utils/api";
 import React from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ function Profile() {
     const dispatch = useDispatch()
     const handleLogout = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/api/user/logout', {
+            const response = await api.post('/api/user/logout', {
                 withCredentials: true,
             })
             dispatch(clearAuth())

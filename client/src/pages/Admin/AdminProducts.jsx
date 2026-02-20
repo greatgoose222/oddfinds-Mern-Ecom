@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "@/utils/api"
 import { useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ const AdminProducts = () => {
         const getProducts = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:3000/api/product', {
+                const response = await api.get('/api/product', {
                     withCredentials: true
                 })
                 setProducts(response.data.products);

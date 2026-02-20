@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
+import api from "@/utils/api"
 import { setAuth, clearAuth, setLoading } from "@/redux/authSlice";
 
 export default function AuthProvider({ children }) {
@@ -11,8 +11,8 @@ export default function AuthProvider({ children }) {
             dispatch(setLoading());
 
             try {
-                const res = await axios.get(
-                    "http://localhost:3000/api/user/me",
+                const res = await api.get(
+                    "/api/user/me",
                     { withCredentials: true }
                 );
                 dispatch(setAuth(res.data.user));

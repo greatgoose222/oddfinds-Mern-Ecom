@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Phone } from 'lucide-react';
 import AddressSheet from '@/components/AddressSheet';
-import axios from 'axios';
+import api from "@/utils/api";
 
 import toast from 'react-hot-toast';
 import { removeAddress } from '@/redux/authSlice';
@@ -28,7 +28,7 @@ function Checkout() {
     const handleAddressRemove = async () => {
 
         try {
-            const response = await axios.delete('http://localhost:3000/api/user/removeAddress', {
+            const response = await api.delete('/api/user/removeAddress', {
                 withCredentials: true,
             })
             dispatch(removeAddress())

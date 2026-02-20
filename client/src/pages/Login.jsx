@@ -1,6 +1,6 @@
 
 import { setAuth } from '@/redux/authSlice';
-import axios from 'axios';
+import api from "@/utils/api";
 import React from 'react'
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -23,7 +23,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3000/api/user/login', { email, password }, {
+            const response = await api.post('/api/user/login', { email, password }, {
                 withCredentials: true,
             })
             console.log(response)
