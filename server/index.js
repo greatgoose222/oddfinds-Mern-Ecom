@@ -36,6 +36,11 @@ const connectDB = async () => {
 };
 connectDB();
 
+// Prevent render from cold start
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "OK" });
+});
+
 app.use('/api/product', productRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/order', orderRoutes)
