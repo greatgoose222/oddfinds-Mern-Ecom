@@ -26,8 +26,8 @@ function Categories() {
             {data.map((item, index) => (
                 <div key={index} className="text-center">
                     <Link to={`product/category/${item.category}`}>
-                        <img src={item.img} className="rounded-sm" />
-                        <p className="text-2xl">{item.category}</p>
+                        <img src={item.img} className="rounded-lg" />
+                        <p className="text-lg pt-4 capitalize">{item.category}</p>
                     </Link>
 
                 </div>

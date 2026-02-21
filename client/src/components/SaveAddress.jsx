@@ -128,9 +128,9 @@ export default function SaveAddress({ onClose }) {
 
       <button
         type="submit"
-        className="w-full bg-green-600 text-white py-3 rounded-md font-medium"
+        className="w-full bg-black text-white py-3 rounded-md font-medium"
       >
-        Save Address
+        Add Address
       </button>
     </form>
   );

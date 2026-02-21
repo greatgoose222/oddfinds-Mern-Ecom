@@ -31,8 +31,8 @@ function Signup() {
 
 
     return (
-        <div className='flex justify-center items-center m-20'>
-            <div className='bg-white max-w-md w-full p-8 rounded-md border shadow-lg'>
+        <div className='flex justify-center items-center p-5 w-full sm:max-w-md mx-auto h-[80vh]'>
+            <div className='px-5 py-10 w-full bg-white  rounded-md border shadow-lg '>
                 <h1 className='text-2xl font-bold text-center pb-5'>Signup</h1>
                 <form onSubmit={handleSubmit}>
                     <div className='flex flex-col pb-3'>

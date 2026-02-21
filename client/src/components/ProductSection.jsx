@@ -37,12 +37,12 @@ const ProductSection = ({ categoryName, limitValue }) => {
     if (loading) return <ProductGridSkeleton num={limitValue} />;
 
     return (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 ">
             {products.map((product) => {
                 return <div key={product._id}>
                     <Link to={`/product/${product.slug}`}>
-                        <img src={product?.images?.featured?.url} className="rounded-sm" />
-                        <p>{product.name}</p>
+                        <img src={product?.images?.featured?.url} className="rounded-lg" />
+                        <p className="mt-1">{product.name}</p>
                     </Link>
                     <div className="flex gap-1">
                         <p className="font-medium">₹{product.sellingPrice}</p>

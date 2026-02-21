@@ -40,8 +40,8 @@ function Login() {
 
 
     return (
-        <div className='flex justify-center items-center m-30  #62b455'>
-            <div className='bg-white lg:max-w-md lg:w-full p-8 rounded-md border shadow-lg '>
+        <div className='flex justify-center items-center p-5 w-full sm:max-w-md mx-auto h-[80vh]'>
+            <div className='px-5 py-15 w-full bg-white  rounded-md border shadow-lg '>
                 <h1 className='text-2xl font-bold text-center pb-5'>Login</h1>
                 <form onSubmit={handleSubmit}>
 

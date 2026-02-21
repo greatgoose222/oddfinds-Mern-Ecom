@@ -24,7 +24,7 @@ function Checkout() {
 
     const navigate = useNavigate()
 
-
+    console.log(user)
     const handleAddressRemove = async () => {
 
         try {
@@ -50,7 +50,7 @@ function Checkout() {
 
                 {/* ---- address ----- */}
                 <div>
-                    {user.address ? (
+                    {user?.address?.fullName ? (
                         <div>
                             <div className='shadow rounded-md mb-5'>
 
@@ -77,6 +77,51 @@ function Checkout() {
                                 </div>
                             </div>
 
+
+
+                            <div className="flex flex-col gap-1 shadow rounded-md mb-5 p-4 border">
+                                <p >Payment Method</p>
+                                <label className="flex items-center gap-2 cursor-pointer text-gray-800">
+                                    <input
+                                        type="radio"
+                                        name="choice"
+                                        value="online"
+                                        defaultChecked
+                                        onChange={(e) => setPaymentMethod(e.target.value)}
+                                        className="h-4 w-4 accent-blue-600"
+                                    />
+                                    Online Payment
+                                </label>
+
+                                <label className="flex items-center gap-2 cursor-pointer text-gray-800">
+                                    <input
+                                        type="radio"
+                                        name="choice"
+                                        value="cod"
+                                        onChange={(e) => setPaymentMethod(e.target.value)}
+                                        className="h-4 w-4 accent-blue-600"
+                                    />
+                                    Cash On Delivery
+                                </label>
+                            </div>
+
+
+                            <div>
+                                {paymentMethod === 'online' ?
+                                    <button
+                                        onClick={() => handleOnlineOrder(user.address, paymentMethod, cartItems, totalPrice, navigate)}
+                                        className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment
+                                    </button> : <button
+                                        onClick={() => handleCodOrder(user.address, paymentMethod, cartItems, totalPrice, navigate)}
+                                        className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Place Cod Order
+                                    </button>}
+
+                            </div>
+
+
+
+
+
                         </div>
                     ) : <div>
                         <h2 className='font-medium text-xl pb-5'>Add Address</h2>
@@ -84,44 +129,8 @@ function Checkout() {
                 </div>
 
                 {/*---- paymentMethod -----*/}
-                <div className="flex flex-col gap-1 shadow rounded-md mb-5 p-4 border">
-                    <p >Payment Method</p>
-                    <label className="flex items-center gap-2 cursor-pointer text-gray-800">
-                        <input
-                            type="radio"
-                            name="choice"
-                            value="online"
-                            defaultChecked
-                            onChange={(e) => setPaymentMethod(e.target.value)}
-                            className="h-4 w-4 accent-blue-600"
-                        />
-                        Online Payment
-                    </label>
-
-                    <label className="flex items-center gap-2 cursor-pointer text-gray-800">
-                        <input
-                            type="radio"
-                            name="choice"
-                            value="cod"
-                            onChange={(e) => setPaymentMethod(e.target.value)}
-                            className="h-4 w-4 accent-blue-600"
-                        />
-                        Cash On Delivery
-                    </label>
-                </div>
 
 
-                <div>
-                    {paymentMethod === 'online' ?
-                        <button
-                            onClick={() => handleOnlineOrder(user.address, paymentMethod, cartItems, totalPrice, navigate)}
-                            className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Proceed To Payment
-                        </button> : <button
-                            onClick={() => handleCodOrder(user.address, paymentMethod, cartItems, totalPrice, navigate)}
-                            className="w-full bg-green-600 text-white py-3 rounded-md font-medium">  Place Cod Order
-                        </button>}
-
-                </div>
 
 
             </div>

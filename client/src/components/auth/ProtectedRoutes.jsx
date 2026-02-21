@@ -11,7 +11,6 @@ export function ProtectedRoute({ children }) {
     }
 
     if (!isAuthenticated) {
-        toast.error('Login Required To access This Page')
         return <Navigate to="/login" state={{ from: location.pathname }} replace />;
     }
 

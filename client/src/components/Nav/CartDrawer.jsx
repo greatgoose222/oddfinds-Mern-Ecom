@@ -54,13 +54,15 @@ function CartDrawer() {
                         <p className='font-bold'>Subtotal:</p>
                         <p className='font-bold'>{`₹${totalPrice}`}</p>
                     </div>
-                    <Link
-                        to="/checkout"
+                    <button
+                        disabled={totalPrice === 0}
                         onClick={() => dispatch(closeCart())}
-                        className="block p-4 mb-3 rounded text-amber-50 font-medium text-lg bg-green-500 w-full text-center"
+                        className={`block p-4 mb-3 rounded text-amber-50 font-medium text-lg w-full text-center 
+                                  ${totalPrice === 0 ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"}`
+                        }
                     >
                         Proceed To Checkout
-                    </Link>
+                    </button>
 
                 </div>
             </div>

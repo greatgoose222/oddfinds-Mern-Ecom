@@ -21,18 +21,18 @@ function UserOrders() {
     }, []);
 
 
-    console.log(orders)
+    // console.log(orders)
     return (
         <div>
             <h1> MyOrders</h1>
             {orders.map(order => (
 
-                <div className="flex flex-col gap-2 p-2 my-2 rounded-md bg-white shadow">
+                <div key={order._id} className="flex flex-col gap-2 p-2 my-2 rounded-md bg-white shadow">
                     <p className="">Order Id: <span className="font-semibold">#{order._id}</span></p>
                     <div className="flex flex-col  gap-2 p-2 border border-gray-100 rounded-md">
-                        {order.orderItems.map(item => (
+                        {order.orderItems.map((item, index) => (
 
-                            <div className="flex gap-2 ">
+                            <div key={index} className="flex gap-2 ">
                                 <img className="h-10 rounded" src={item.image} />
                                 <div className="-mt-1">
                                     <p>{item.name}</p>

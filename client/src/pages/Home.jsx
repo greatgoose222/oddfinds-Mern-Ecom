@@ -7,7 +7,7 @@ import Categories from "../components/Categories";
 function Home() {
     return (
         <div className="">
-            <div className="my-5 p-5 lg:max-w-6xl mx-auto ">
+            <div className="mt-5 p-5 lg:max-w-6xl mx-auto ">
                 <img className="rounded-xl h-80 md:h-110 w-auto object-cover object-center" src="https://res.cloudinary.com/dtpzcjkra/image/upload/v1770814379/home-upscale_ixu4kt.webp" alt="" />
             </div>
             <div className="p-5 lg:max-w-6xl mx-auto">
@@ -17,7 +17,7 @@ function Home() {
             </div>
 
 
-            <div className="bg-[#f2f2f2]">
+            <div className="bg-[#f2f2f2] mt-10">
                 <div className=" p-5 py-15 lg:max-w-6xl mx-auto">
                     <h1 className="text-2xl font-medium">Our Top <span className="text-[#c06135]">Catagories</span></h1>
                     <p className="text-lg mb-5">Keep your essentials organized with our Containers.</p>
