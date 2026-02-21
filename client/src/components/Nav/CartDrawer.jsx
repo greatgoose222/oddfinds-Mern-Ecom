@@ -3,12 +3,13 @@ import { closeCart } from "@/redux/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CartItems from "../CartItems";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CartDrawer() {
     const isCartOpen = useSelector((state) => state.ui.isCartOpen);
     const totalPrice = useSelector((state) => state.cart.totalPrice);
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
     // Disable background scroll when cart opens
     useEffect(() => {
         if (isCartOpen) {
@@ -31,7 +32,7 @@ function CartDrawer() {
         >
             {/* Drawer */}
             <div
-                className={`absolute inset-y-0 right-0 w-80 max-w-full px-5 pt-6 bg-white flex flex-col
+                className={`absolute inset-y-0 right-0 w-80 max-w-full px-4 pt-8 bg-white flex flex-col
           transform transition-transform duration-300 ease-in-out
           ${isCartOpen ? "translate-x-0" : "translate-x-full"}`}
                 onClick={(e) => e.stopPropagation()}
@@ -56,7 +57,7 @@ function CartDrawer() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="border-t pt-4 pb-4">
+                <div className="pt-4 pb-2">
                     <div className="flex justify-between pb-3">
                         <p className="font-bold">Subtotal:</p>
                         <p className="font-bold">₹{totalPrice}</p>
@@ -64,12 +65,14 @@ function CartDrawer() {
 
                     <button
                         disabled={totalPrice === 0}
-                        onClick={() => dispatch(closeCart())}
+                        onClick={() => {
+                            if (totalPrice === 0) return;
+
+                            dispatch(closeCart());
+                            navigate("/checkout");
+                        }}
                         className={`w-full p-4 rounded text-white font-medium text-lg
-              ${totalPrice === 0
-                                ? "bg-gray-400 cursor-not-allowed"
-                                : "bg-green-500 hover:bg-green-600"
-                            }`}
+                                  ${totalPrice === 0 ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"}`}
                     >
                         Proceed To Checkout
                     </button>
