@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { addToCart } from "@/redux/cartSlice";
 import { openCart } from "@/redux/uiSlice";
 import { useDispatch } from "react-redux";
-import ProductImages from "../components/ProductImages";
+import ProductImages from "@/components/ProductImages";
 
 function ProductDetails() {
     const { slug } = useParams();

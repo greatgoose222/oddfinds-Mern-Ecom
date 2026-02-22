@@ -1,6 +1,6 @@
 // import AllProducts from "@/components/AllProducts";
-import ProductSection from "@/components/ProductSection";
-import Categories from "../components/Categories";
+import ProductSection from "@/components/user/ProductSection";
+import Categories from "../../components/user/Categories";
 
 
 
@@ -18,7 +18,7 @@ function Home() {
 
 
             <div className="bg-[#f2f2f2] mt-10">
-                <div className=" p-5 py-15 lg:max-w-6xl mx-auto">
+                <div className=" p-5 py-20 lg:max-w-6xl mx-auto">
                     <h1 className="text-2xl font-medium">Our Top <span className="text-[#c06135]">Catagories</span></h1>
                     <p className="text-lg mb-5">Keep your essentials organized with our Containers.</p>
                     <Categories />
@@ -30,6 +30,13 @@ function Home() {
                 <p className="text-lg mb-5">Keep scrolling Through Our Complete Catalogue</p>
                 <ProductSection />
             </div>
+
+
+
+
+
+
+
 
         </div>
     );

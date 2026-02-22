@@ -1,14 +1,14 @@
-import SaveAddress from '@/components/SaveAddress'
-import CartItems from '@/components/CartItems'
+import SaveAddress from '@/components/user/SaveAddress'
+import CartItems from '@/components/user/CartItems'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Phone } from 'lucide-react';
-import AddressSheet from '@/components/AddressSheet';
+import AddressSheet from '@/components/user/AddressSheet';
 import api from "@/utils/api";
 
 import toast from 'react-hot-toast';
 import { removeAddress } from '@/redux/authSlice';
-import ShippingDate from '@/components/ShippingDate';
+import ShippingDate from '@/components/user/ShippingDate';
 import { handleCodOrder, handleOnlineOrder } from '@/helpers/order.helper';
 import { useNavigate } from 'react-router-dom';
 

@@ -2,9 +2,9 @@ import api from "@/utils/api";
 import React from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { clearAuth } from '../redux/authSlice';
+import { clearAuth } from "@/redux/authSlice";
 import { LogOut } from 'lucide-react';
-import UserOrders from '../components/UserOrders';
+import UserOrders from "@/components/user/UserOrders";
 
 function Profile() {
     const dispatch = useDispatch()

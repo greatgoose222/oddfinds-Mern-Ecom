@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { closeCart } from "@/redux/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
-import CartItems from "../CartItems";
+import CartItems from "../user/CartItems";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

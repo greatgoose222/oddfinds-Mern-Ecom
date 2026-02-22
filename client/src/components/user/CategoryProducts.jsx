@@ -3,7 +3,7 @@ import api from "@/utils/api"
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
 import { openCart } from "@/redux/uiSlice";
-import ProductGridSkeleton from "./ProductGridSkeleton";
+import ProductGridSkeleton from "../ProductGridSkeleton";
 import { Link, useParams } from "react-router-dom";
 
 const CategoryProducts = ({ limitValue = 10 }) => {
