@@ -1,16 +1,165 @@
-# React + Vite
+# 🛍️ OddFinds -- Production MERN E-Commerce Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack, production-ready eCommerce web application built using the
+MERN stack (MongoDB, Express, React, Node.js).
 
-Currently, two official plugins are available:
+This project powers my live online store and is designed with real-world
+architecture, authentication, payment integration, and scalable
+structure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+------------------------------------------------------------------------
 
-## React Compiler
+## 🌐 Live Website
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔗 https://oddfinds.vercel.app/
 
-## Expanding the ESLint configuration
+------------------------------------------------------------------------
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📌 About The Project
+
+OddFinds is a custom-built eCommerce platform focused on home decor and
+kitchen essentials products.
+
+This is a real, deployed, and maintained production application handling
+actual users and secure online payments.
+
+The platform is built with scalability, clean architecture, and security
+best practices in mind.
+
+------------------------------------------------------------------------
+
+## 🏗 Tech Stack
+
+### Frontend
+
+-   React.js (Vite)
+-   React Router DOM
+-   Redux Toolkit
+-   Tailwind CSS
+-   Axios
+
+### Backend
+
+-   Node.js
+-   Express.js
+-   MongoDB (Mongoose)
+-   JWT Authentication
+-   Bcrypt Password Hashing
+
+### Payment Integration
+
+-   Razorpay Payment Gateway
+
+------------------------------------------------------------------------
+
+## 🔐 Core Features
+
+### 👤 User Features
+
+-   User Registration & Login
+-   JWT-based Secure Authentication
+-   Browse Products
+-   Product Details Page
+-   Add to Cart
+-   Secure Checkout Flow
+-   Razorpay Payment Integration
+-   Order Success Page
+-   Profile Management
+-   Shipping & Refund Policy Pages
+
+### 🛠 Admin Features
+
+-   Add Products
+-   Update Products
+-   Delete Products
+-   Manage Orders
+-   Manage Users
+-   Role-based Route Protection
+
+------------------------------------------------------------------------
+
+## 🔒 Security Implementation
+
+-   Password hashing using bcrypt
+-   JWT token generation and verification
+-   Protected API routes
+-   Role-based authorization middleware
+-   Environment variable configuration
+-   Secure payment verification
+
+------------------------------------------------------------------------
+
+## 📂 Project Structure
+
+    oddfinds-mern/
+    │
+    ├── client/                # React Frontend (Vite)
+    │   ├── src/
+    │   │   ├── components/
+    |   |   |   ├── user/
+    │   │   │   └── admin/
+    │   │   ├── pages/
+    │   │   │   ├── user/
+    │   │   │   └── admin/
+    │   │   ├── redux/
+    │   │   └── App.jsx
+    │
+    ├── server/                # Express Backend
+    │   ├── controllers/
+    │   ├── models/
+    │   ├── routes/
+    │   ├── middleware/
+    │   └── server.js
+    │
+    └── README.md
+
+------------------------------------------------------------------------
+
+## 🚀 Architecture Overview
+
+The application follows a RESTful API architecture with clear separation
+between frontend and backend.
+
+-   Client communicates with backend using secure API calls.
+-   Backend handles authentication, authorization, business logic, and
+    payment verification.
+-   MongoDB stores users, products, and order data.
+-   Redux manages global state on the frontend.
+
+------------------------------------------------------------------------
+
+## 🌍 Deployment
+
+The application is deployed in a production environment with proper
+environment configuration and secure credentials management.
+
+The architecture supports scalability and future feature expansion.
+
+------------------------------------------------------------------------
+
+## 🧠 What This Project Demonstrates
+
+-   Full-stack application architecture
+-   Secure authentication system design
+-   Payment gateway integration
+-   Role-based authorization
+-   Production deployment workflow
+-   Real-world debugging and maintenance
+-   Clean and scalable folder structure
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Developer
+
+**Mukesh Kumar**\
+B.Tech Computer Science\
+Full Stack Web Developer\
+Founder -- OddFinds
+
+Currently building production-level applications and preparing for product-based company roles.
+
+------------------------------------------------------------------------
+
+## ⭐ If You Like This Project
+
+Please consider giving it a star on GitHub.
