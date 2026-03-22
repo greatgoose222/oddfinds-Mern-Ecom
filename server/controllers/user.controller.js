@@ -1,22 +1,34 @@
 import User from '../models/user.model.js'
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
+import { signupSchema } from '../validators/user.schema.js';
+
 
 export const signup = async (req, res) => {
-    const { name, email, password } = req.body
     try {
-        if (!name || !email || !password) {
-            return res.status(400).json({ error: "All fields are required" });
+        const result = signupSchema.safeParse(req.body);
+
+        // console.log(result.error.issues);                                                                                                                
+        console.log(result);
+        if (!result.success) {
+            return res.status(400).json({
+                success: false,
+                errors: result.error.issues.map(err => ({
+                    field: err.path[0],
+                    message: err.message
+                }))
+            });
         }
+
+        const { name, email, password } = result.data;
 
         const existEmail = await User.findOne({ email });
         if (existEmail) {
-            return res.status(400).json({ error: "User already registered" });
+            return res.status(400).json({ success: false, message: "User already registered" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        const newUser = await User.create({ name, email, password: hashedPassword })
+        const newUser = await User.create({ name, email, password: hashedPassword });
 
         res.status(201).json({
             success: true,
@@ -28,11 +40,51 @@ export const signup = async (req, res) => {
                 role: newUser.role
             }
         });
-    } catch (error) {
-        res.status(400).json({ message: "Error in Creating User" });
-    }
 
-}
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+    }
+};
+
+
+
+
+
+// export const signup = async (req, res) => {
+//     const { name, email, password } = req.body
+//     try {
+//         if (!name || !email || !password) {
+//             return res.status(400).json({ error: "All fields are required" });
+//         }
+
+//         const existEmail = await User.findOne({ email });
+//         if (existEmail) {
+//             return res.status(400).json({ error: "User already registered" });
+//         }
+
+//         const hashedPassword = await bcrypt.hash(password, 10);
+
+//         const newUser = await User.create({ name, email, password: hashedPassword })
+
+//         res.status(201).json({
+//             success: true,
+//             message: "User Created Successfully",
+//             user: {
+//                 id: newUser._id,
+//                 name: newUser.name,
+//                 email: newUser.email,
+//                 role: newUser.role
+//             }
+//         });
+//     } catch (error) {
+//         res.status(400).json({ message: "Error in Creating User" });
+//     }
+
+// }
 
 export const login = async (req, res) => {
     const { email, password } = req.body
