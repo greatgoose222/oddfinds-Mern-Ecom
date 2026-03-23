@@ -17,7 +17,7 @@ function Categories() {
         },
         {
             img: 'https://res.cloudinary.com/dtpzcjkra/image/upload/v1771051832/light_vsht8h.webp',
-            category: 'lighting'
+            category: 'gadget'
         },
 
     ]

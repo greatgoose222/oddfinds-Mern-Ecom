@@ -16,7 +16,6 @@ function Home() {
                 <ProductSection categoryName={"kitchen"} limitValue={4} />
             </div>
 
-
             <div className="bg-[#f2f2f2] mt-10">
                 <div className=" p-5 py-20 lg:max-w-6xl mx-auto">
                     <h1 className="text-2xl font-medium">Our Top <span className="text-[#c06135]">Catagories</span></h1>
@@ -26,6 +25,21 @@ function Home() {
             </div>
 
             <div className="mt-10 p-5 lg:max-w-6xl mx-auto">
+                <h1 className="text-2xl font-medium">Latest <span className="text-[#c06135]">Gadgets</span> From Our Store</h1>
+                <p className="text-lg mb-5">Shop our Latest-selling favorites, loved by customers.</p>
+                <ProductSection categoryName={"gadget"} limitValue={4} />
+            </div>
+
+            <div className="bg-[#f2f2f2] mt-10">
+                <div className=" p-5 py-15 lg:max-w-6xl mx-auto">
+                    <h1 className="text-2xl font-medium">Premium Smart Storage <span className="text-[#c06135]">Containers</span></h1>
+                    <p className="text-lg mb-5">Keep your essentials organized with our Containers.</p>
+                    <ProductSection categoryName={"container"} limitValue={4} />
+                </div>
+            </div>
+
+
+            <div className="mt-5 p-5 lg:max-w-6xl mx-auto">
                 <h1 className="text-2xl font-medium">Our <span className="text-[#c06135]">All Products</span> From Store</h1>
                 <p className="text-lg mb-5">Keep scrolling Through Our Complete Catalogue</p>
                 <ProductSection />
