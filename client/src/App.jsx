@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import HomeLayout from '@/components/layout/HomeLayout'
 import Home from '@/pages/user/Home'
@@ -57,7 +57,7 @@ function App() {
             <AdminLayout />
           </ProtectedAdminRoutes>
         }>
-          <Route index element={<Dashboard />} />
+          <Route index element={<Navigate to="products" />} />
           <Route path="products" element={<AdminProducts />} />
           <Route path="new-product" element={<NewProduct />} />
           <Route path="orders" element={<AdminOrders />} />
