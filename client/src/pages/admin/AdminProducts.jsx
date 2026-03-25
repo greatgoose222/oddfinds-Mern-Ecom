@@ -35,22 +35,23 @@ const AdminProducts = () => {
 
     return (
         <div className="p-5">
-            <Link to="/admin/new-product">
-                <button className="bg-black text-white text-md font-medium rounded px-4 py-2 mb-5 hover:bg-black/80 cursor-pointer">+ Add New Product</button>
-            </Link>
+
+            <button className="bg-black text-white text-md font-medium rounded px-4 py-2 mb-5 hover:bg-black/80 cursor-pointer">All Product</button>
+
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6 ">
 
                 {products.map((product) => {
                     return <div key={product._id}>
-                        <Link to={`/product/${product._id}`}>
-                            <img src={product?.images?.featured?.url} className="rounded-sm" />
-                            <p>{product.name}</p>
+                        <Link to={`/product/${product.slug}`}>
+                            <img src={product?.images?.featured?.url} className="rounded-lg" />
+                            <p className="mt-1">{product.name}</p>
                         </Link>
                         <div className="flex gap-1">
                             <p className="font-medium">₹{product.sellingPrice}</p>
                             <p className="text-gray-400 line-through">₹{product.price}</p>
                         </div>
+
                     </div>
                 })}
             </div>
